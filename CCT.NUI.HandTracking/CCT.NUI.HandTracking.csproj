@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8310B15-6B84-40A5-856D-B0AE0EEE3771}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CCT.NUI.HandTracking</RootNamespace>
+    <AssemblyName>CCT.NUI.HandTracking</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Kinect, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\Microsoft SDKs\Kinect\v2.0_1409\Assemblies\Microsoft.Kinect.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FingerBaseDetector.cs" />
+    <Compile Include="FingerPoint.cs" />
+    <Compile Include="FingerPointDetector.cs" />
+    <Compile Include="HandCollection.cs" />
+    <Compile Include="HandData.cs" />
+    <Compile Include="HandDataFactory.cs" />
+    <Compile Include="Mouse\CenterOfHandCursorMode.cs" />
+    <Compile Include="Mouse\CenterOfClusterCursorMode.cs" />
+    <Compile Include="Mouse\ClickModeBase.cs" />
+    <Compile Include="Mouse\HandClickMode.cs" />
+    <Compile Include="Mouse\HandTrackingCursorMode.cs" />
+    <Compile Include="Mouse\TwoFingerClickMode.cs" />
+    <Compile Include="Mouse\FingerCursorMode.cs" />
+    <Compile Include="Mouse\IClickMode.cs" />
+    <Compile Include="Mouse\ICursorMode.cs" />
+    <Compile Include="Mouse\MouseController.cs" />
+    <Compile Include="Mouse\SecondHandClickMode.cs" />
+    <Compile Include="Mouse\UserInput.cs" />
+    <Compile Include="ShapeHandDataFactory.cs" />
+    <Compile Include="HandDataSource.cs" />
+    <Compile Include="HandDataSourceSettings.cs" />
+    <Compile Include="IdGenerator.cs" />
+    <Compile Include="IFinger.cs" />
+    <Compile Include="IHand.cs" />
+    <Compile Include="IHandDataFactory.cs" />
+    <Compile Include="IHandDataSource.cs" />
+    <Compile Include="Palm.cs" />
+    <Compile Include="PalmFinder.cs" />
+    <Compile Include="Persistence\DepthFrameEntity.cs" />
+    <Compile Include="Persistence\FingerEntity.cs" />
+    <Compile Include="Persistence\HandEntity.cs" />
+    <Compile Include="Persistence\TestFrameEntity.cs" />
+    <Compile Include="Persistence\TestFrameRepository.cs" />
+    <Compile Include="DistanceMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Touch\KinectMultiTouchDevice.cs" />
+    <Compile Include="Touch\KinectTouchDevice.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CCT.NUI.Core\CCT.NUI.Core.csproj">
+      <Project>{AA2D3699-3FC9-43D6-AA24-CD930E487BC7}</Project>
+      <Name>CCT.NUI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CCT.NUI.KinectSDK\CCT.NUI.KinectSDK.csproj">
+      <Project>{cdb12665-4e9e-46ca-ad74-63e943c17f62}</Project>
+      <Name>CCT.NUI.KinectSDK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

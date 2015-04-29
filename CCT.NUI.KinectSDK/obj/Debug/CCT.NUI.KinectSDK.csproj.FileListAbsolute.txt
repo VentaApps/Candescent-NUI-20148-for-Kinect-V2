@@ -1,0 +1,11 @@
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\bin\Debug\CCT.NUI.KinectSDK.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\bin\Debug\CCT.NUI.KinectSDK.pdb
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\bin\Debug\CCT.NUI.Core.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\bin\Debug\Microsoft.Kinect.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\bin\Debug\OpenNI.Net.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\bin\Debug\XnVNITE.net.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\bin\Debug\CCT.NUI.Core.pdb
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\bin\Debug\Microsoft.Kinect.xml
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\obj\Debug\CCT.NUI.KinectSDK.csprojResolveAssemblyReference.cache
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\obj\Debug\CCT.NUI.KinectSDK.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.KinectSDK\obj\Debug\CCT.NUI.KinectSDK.pdb

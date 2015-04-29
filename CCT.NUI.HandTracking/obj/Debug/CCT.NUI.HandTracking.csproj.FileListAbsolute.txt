@@ -1,0 +1,13 @@
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\bin\Debug\CCT.NUI.HandTracking.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\bin\Debug\CCT.NUI.HandTracking.pdb
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\bin\Debug\CCT.NUI.Core.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\bin\Debug\CCT.NUI.KinectSDK.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\bin\Debug\Microsoft.Kinect.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\bin\Debug\OpenNI.Net.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\bin\Debug\XnVNITE.net.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\bin\Debug\CCT.NUI.Core.pdb
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\bin\Debug\CCT.NUI.KinectSDK.pdb
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\bin\Debug\Microsoft.Kinect.xml
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\obj\Debug\CCT.NUI.HandTracking.csprojResolveAssemblyReference.cache
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\obj\Debug\CCT.NUI.HandTracking.dll
+C:\Users\lenovo\Downloads\Compressed\candescentnui-20148\CCT.NUI.HandTracking\obj\Debug\CCT.NUI.HandTracking.pdb

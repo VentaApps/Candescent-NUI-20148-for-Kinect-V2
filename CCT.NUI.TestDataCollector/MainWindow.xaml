@@ -1,0 +1,143 @@
+﻿<Window x:Class="CCT.NUI.TestDataCollector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:CCT.NUI.TestDataCollector"
+        xmlns:ctrl="clr-namespace:CCT.NUI.Visual;assembly=CCT.NUI.Visual"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        Title="Candescent NUI - Test Data Collector" Width="1200" Height="768" MinWidth="1200" MinHeight="786" Loaded="Window_Loaded" Icon="/CCT.NUI.TestDataCollector;component/Images/organizer.ico">
+    <Window.Resources>
+        <uc:MultiValueConverter x:Key="MultiValueConverter" ValueCount="2"/>
+        <Style x:Key="FrameStyle" TargetType="ctrl:WpfVideoControl">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="65"/>
+            <Setter Property="BorderBrush" Value="Yellow"/>
+            <EventSetter Event="MouseDown" Handler="bitmapControl_MouseDown" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=IsSelected}" Value="False">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BitmapEffect">
+                        <Setter.Value>
+                            <BlurBitmapEffect Radius="2" KernelType="Box"/>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=IsSelected}" Value="True">
+                    <Setter Property="BorderThickness" Value="2"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <Border DockPanel.Dock="Top" BorderThickness="1" BorderBrush="DarkGray">
+            <ToolBar Height="26" HorizontalAlignment="Stretch" Name="toolBar">
+                <Button Name="buttonLoadTestFrame" Command="{Binding Path=LoadFrameCommand}" Content="Load Test Frames..."></Button>
+                <Button Name="buttonSaveTestFrame" Command="{Binding Path=SaveFrameCommand}" IsEnabled="{Binding Path=IsFrameSelected}">Save Test Frame...</Button>
+                <Separator/>
+                <Button Name="buttonRemoveFrame" Command="{Binding Path=RemoveFrameCommand}" IsEnabled="{Binding Path=IsFrameSelected}">Remove Selected Frame</Button>            
+                <Separator/>
+                <Button Name="buttonStartDepthSource" Click="buttonStartDepthSource_Click" Command="{Binding Path=VideoPresenter.StartDepthSourceCommand}">Start Depth Source</Button>
+                <Separator/>
+                <Button Name="buttonCapture" Command="{Binding Path=VideoPresenter.CaptureFrameCommand}" IsEnabled="False">Capture Frame</Button>
+                <Button Name="buttonCaptureDelayed" Command="{Binding Path=VideoPresenter.CaptureFrameDelayedCommand}" IsEnabled="False">Capture Frame (Delayed)</Button>
+            </ToolBar>
+        </Border>
+        <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Horizontal" Height="65" Background="WhiteSmoke">
+                <Label Padding="10" FontWeight="Bold">
+                    <Label.Background>
+                        <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 1">
+                            <GradientStop Color="LightSteelBlue" Offset="0.0" />
+                            <GradientStop Color="WhiteSmoke" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Label.Background>
+                    <Label.LayoutTransform>
+                        <RotateTransform Angle="270"/>
+                    </Label.LayoutTransform>
+                    Frames
+                </Label>
+                <ItemsControl ItemsSource="{Binding Path=Frames}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ctrl:WpfVideoControl Stretch="Fill" Style="{StaticResource ResourceKey=FrameStyle}" Image="{Binding Path=Image}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+        <TabControl Width="250" DockPanel.Dock="Right">
+            <TabItem Header="Settings">
+                <DockPanel Background="WhiteSmoke">
+                    <Label FontWeight="Bold" DockPanel.Dock="Top">Display Options</Label>
+                    <CheckBox Name="checkClusterLayer" Command="{Binding Path=OptionChangeCommand}" Margin="3" DockPanel.Dock="Top">
+                        <CheckBox.IsChecked>
+                            <MultiBinding Converter="{StaticResource ResourceKey=MultiValueConverter}" Mode="OneWayToSource">
+                                <Binding Path="LayerViewModel.DisplayClusteringLayer" Mode="OneWayToSource"/>
+                                <Binding Path="VideoPresenter.LayerViewModel.DisplayClusteringLayer" Mode="OneWayToSource"/>
+                            </MultiBinding>
+                        </CheckBox.IsChecked>
+                        Clustering Layer
+                    </CheckBox>
+                    <CheckBox Name="checkHandLayer" Command="{Binding Path=OptionChangeCommand}" Margin="3" DockPanel.Dock="Top">
+                        <CheckBox.IsChecked>
+                            <MultiBinding Converter="{StaticResource ResourceKey=MultiValueConverter}" Mode="OneWayToSource">
+                                <Binding Path="LayerViewModel.DisplayHandLayer" Mode="OneWayToSource"/>
+                                <Binding Path="VideoPresenter.LayerViewModel.DisplayHandLayer" Mode="OneWayToSource"/>
+                            </MultiBinding>
+                        </CheckBox.IsChecked>
+                        Hand Data Layer
+                    </CheckBox>
+                    <Label FontWeight="Bold" DockPanel.Dock="Top">Data Source Options</Label>
+                    <TabControl>
+                        <TabItem Header="Clustering">
+                            <WindowsFormsHost Name="propertyGridClusteringHost">
+                                <wf:PropertyGrid Dock="Fill"/>
+                            </WindowsFormsHost>
+                        </TabItem>
+                        <TabItem Header="Shape">
+                            <WindowsFormsHost Name="propertyGridShapeHost">
+                                <wf:PropertyGrid Dock="Fill"/>
+                            </WindowsFormsHost>
+                        </TabItem>                        
+                        <TabItem Header="Hand Detection">
+                            <WindowsFormsHost Name="propertyGridHandHost">
+                                <wf:PropertyGrid Dock="Fill"/>
+                            </WindowsFormsHost>
+                        </TabItem>
+                    </TabControl>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+        <TabControl  Background="White" Name="tabControlMain">
+            <TabItem Header="Capture Frames">
+                <uc:DisplayControl x:Name="displayControl" ImageSource="{Binding Path=VideoPresenter.VideoSource}" Layers="{Binding Path=VideoPresenter.LayerViewModel.Layers}"/>
+            </TabItem>
+            <TabItem Header="Edit Frames">
+                <DockPanel>
+                    <StackPanel Background="WhiteSmoke" Name="panelHands" DockPanel.Dock="Left" Margin="5 5">
+                        <Button Name="buttonAddHand" Command="{Binding Path=AddHandCommand}" IsEnabled="{Binding Path=IsFrameSelected}">Add Hand</Button>
+                        <ScrollViewer Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DockPanel}}, Path=ActualHeight}" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl MinWidth="210" ItemsSource="{Binding Path=CurrentFrame.Hands}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <uc:HandSettingsControl Margin="0,10,2,0" MinWidth="200" MarkPalmCenter="handControl_MarkPalmCenter" MarkFingers="handControl_MarkFingers" Close="handControl_Close" RemoveFinger="panelHands_RemoveFinger"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                        <Label Name="labelMode"/>
+                        <Label>Mouse Location:</Label>
+                        <Label Name="labelMouseLocation" Content="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DepthLocation}"/>
+                    </StackPanel>
+                    <uc:DisplayControl x:Name="displayControlEdit" MouseLocation="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.MouseLocation, Mode=TwoWay}" ImageSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.ImageSource}" MouseDown="displayControl_MouseDown" Layers="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.LayerViewModel.Layers}" DataContext="{Binding Path=CurrentFrame}" />
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

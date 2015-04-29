@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="CCT.NUI.TestDataCollector.HandSettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Border BorderThickness="2" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+            <Border.Style>
+                <Style>
+                    <Setter Property="Border.Background" Value="WhiteSmoke"/>
+                    <Setter Property="Border.BorderBrush" Value="DarkGray"/>
+                    <Style.Triggers>
+                        <Trigger Property="Border.IsMouseOver" Value="True">
+                            <Setter Property="Border.BorderBrush" Value="Black"/>
+                            <Setter Property="Border.Background" Value="Beige"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <StackPanel>
+                <DockPanel Background="LightSteelBlue">
+                    <Button HorizontalAlignment="Right" Width="23" Margin="3" DockPanel.Dock="Right" Name="buttonClose" Click="buttonClose_Click">X</Button>
+                    <Label FontWeight="Bold" ContentStringFormat="Hand #{0}">
+                        <Label.Content>
+                            <Binding Path="Id"/>
+                        </Label.Content>
+                    </Label>
+                </DockPanel>
+                <StackPanel Margin="3">
+                    <Label ContentStringFormat="Center of Palm: {0}">
+                        <Label.Content>
+                            <Binding Path="PalmPointText"/>
+                        </Label.Content>
+                    </Label>
+                    <Label ContentStringFormat="Fingers: {0}">
+                        <Label.Content>
+                            <Binding Path="FingerCount"/>
+                        </Label.Content>
+                    </Label>
+                    <ListBox ItemsSource="{Binding Path=FingerPoints}" HorizontalContentAlignment="Stretch" Visibility="{Binding Path=HasFingers, Converter={StaticResource BoolVisibilityConverter}}" SelectionChanged="ListBox_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <Button DockPanel.Dock="Right" Click="Button_Click">x</Button>
+                                    <Label Content="{Binding}"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button Margin="0 4 0 0" Name="buttonMarkPalmCenter" Click="buttonMarkPalmCenter_Click">Mark Center of Palm</Button>
+                    <Button Margin="0 4 0 0" Name="buttonMarkFingers" Click="buttonMarkFingers_Click">Mark Fingers</Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,8 @@
+﻿<Window x:Class="CCT.NUI.WPFSamples.TouchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Candescent WPF Samples - Touch" Height="525" Width="525" Icon="/CCT.NUI.WPFSamples;component/organizer.ico" Background="Black" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Canvas Name="mainCanvas" Height="500" Width="500"/>
+    </Grid>
+</Window>

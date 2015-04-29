@@ -1,0 +1,17 @@
+﻿<Window x:Class="CCT.NUI.WPFSamples.VideoManipulationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:CCT.NUI.Visual;assembly=CCT.NUI.Visual"
+        Title="VideoWindow" Height="750" Width="750">
+    <Grid>
+        <uc:WpfVideoControl Name="videoControl" Width="640" Height="480"/>
+        <Viewport3D Name="viewPort" Width="640" Height="480" MouseDown="viewPort_MouseDown">
+            <Viewport3D.Camera>
+                <PerspectiveCamera Position="320,240,1000" LookDirection="0,0,-1" UpDirection="0,1,0" />
+            </Viewport3D.Camera>
+        </Viewport3D>
+        <Canvas Name ="canvas" Width="640" Height="480">
+            <Slider Canvas.Left="10" Canvas.Top="10" Height="23" Name="slider" Width="130" Opacity="0" />
+        </Canvas>
+    </Grid>
+</Window>

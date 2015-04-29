@@ -1,0 +1,33 @@
+﻿<Window x:Class="CCT.NUI.WPFSamples.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:CCT.NUI.Visual;assembly=CCT.NUI.Visual"
+        Title="Candescent NUI WPF Samples" Height="540" Width="958" Icon="/CCT.NUI.WPFSamples;component/organizer.ico" IsManipulationEnabled="true" Closing="Window_Closing">
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" Width="280">
+            <Label FontWeight="Bold">Candescent NUI WPF Samples</Label>
+            <Label>
+                <Hyperlink Name="nuiLink" NavigateUri="http://candescentnui.codeplex.com" RequestNavigate="nuiLink_RequestNavigate">
+                    http://candescentnui.codeplex.com
+                </Hyperlink>
+            </Label>
+            <Label>
+                <Hyperlink Name="blogLink" NavigateUri="http://blog.candescent.ch" RequestNavigate="blogLink_RequestNavigate">
+                    http://blog.candescent.ch
+                </Hyperlink>
+            </Label>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Name="radioOpenNI" Margin="10" Checked="radioOpenNI_Checked">OpenNI</RadioButton>
+                <RadioButton Name="radioKinectSDK" Margin="10" Checked="radioKinectSDK_Checked">Kinect SDK</RadioButton>
+            </StackPanel>
+            <Button Margin="5" Name="buttonTouch" Click="buttonTouch_Click" IsEnabled="False">Touch</Button>
+            <Button Margin="5" Name="buttonManipulation" Click="buttonManipulation_Click" IsEnabled="False">Image Manipulation</Button>
+            <Button Margin="5" Name="buttonRectangleVideo" Click="buttonRectangleVideo_Click" IsEnabled="False">Video Manipulation</Button>
+            <Button Margin="5" Name="buttonHandInterface" Click="buttonHandInterface_Click" IsEnabled="False">Pin Code Interface</Button>
+            <CheckBox Margin="5" Content="Clustering Layer" Height="16" Name="checkClusterLayer" Click="checkClusterLayer_Click" IsEnabled="False" />
+            <CheckBox Margin="5" Content="Hand Layer" Height="16" Name="checkHandLayer" Click="checkHandLayer_Click" IsEnabled="False" />
+            <Button Margin="5" VerticalAlignment="Bottom" Click="Button_Click">Exit</Button>
+        </StackPanel>
+        <uc:WpfVideoControl Name="videoControl" Width="640" Height="480" HorizontalAlignment="Left" Margin="286,12,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

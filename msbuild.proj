@@ -1,0 +1,59 @@
+<Project DefaultTargets="Zip" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+
+  <PropertyGroup>
+    <ProjectName>CCT.NUI</ProjectName>
+    <SolutionFile>CCT.NUI.sln</SolutionFile>
+    <OutputDirectory>$(MSBuildProjectDirectory)\Release\CCT.NUI</OutputDirectory>
+  </PropertyGroup>
+
+  <!-- Cleans the solution -->
+  <Target Name="Clean">      
+    <RemoveDir Directories="$(OutputDirectory)" />
+    <MSBuild Projects="$(SolutionFile)" Targets="Clean"/>
+    <Message Text="Solution and output directory have been cleaned."/>
+  </Target>
+
+  <!-- Builds the solution -->
+  <Target Name="Build" DependsOnTargets="Clean">
+    <!-- Targets="Rebuild" -->
+    <MSBuild Projects="$(SolutionFile)"  Targets="Rebuild" Properties="Configuration=Release"/>
+    <Message Text="The release version has been compiled."/>
+  </Target>
+
+  <!-- Copy to the output directory-->
+  <Target Name="Drop" DependsOnTargets="Build">     
+    <ItemGroup>
+      <OutputFiles Include="$(MSBuildProjectDirectory)\CCT.NUI.Samples\bin\Release\**\*.*;$(MSBuildProjectDirectory)\CCT.NUI.WPFSamples\bin\Release\**\*.*;$(MSBuildProjectDirectory)\CCT.NUI.MouseControl\bin\Release\**\*.*"/>
+    </ItemGroup>
+    <Copy SourceFiles="@(OutputFiles)" DestinationFiles="@(OutputFiles->'$(OutputDirectory)\%(RecursiveDir)%(Filename)%(Extension)')"/>
+    <Message Text="Build has been dropped to $(OutputDirectory)."/>
+  </Target>
+
+
+  <Target Name="AfterDrop" DependsOnTargets="Drop">
+    <ItemGroup>
+      <UnusedFiles Include="$(OutputDirectory)\*.pdb;$(OutputDirectory)\*.xml;$(OutputDirectory)\*.txt" Exclude="$(OutputDirectory)\config.xml;$(OutputDirectory)\mouse_config.xml"/> 
+      <VsHostFiles Include="$(OutputDirectory)\*vshost*"/> 
+    </ItemGroup>
+    <Delete Files="@(UnusedFiles)"/>
+    <Delete Files="@(VsHostFiles)"/>
+  </Target>
+
+  <!-- Copy Licenses-->
+  <Target Name="CopyLicenses" DependsOnTargets="AfterDrop">     
+    <ItemGroup>
+      <LicenseFiles Include="$(MSBuildProjectDirectory)\License.txt;$(MSBuildProjectDirectory)\Lib\OpenNI\*.txt;$(MSBuildProjectDirectory)\Lib\KinectSDK\Eula.rtf"/>
+    </ItemGroup>
+    <Copy SourceFiles="@(LicenseFiles)" DestinationFiles="@(LicenseFiles->'$(OutputDirectory)\Licenses\%(Filename)%(Extension)')"/>
+    <Message Text="Licenses have been dropped to $(OutputDirectory)."/>
+  </Target>
+
+
+  <Target Name="Zip" DependsOnTargets="CopyLicenses">
+     <ItemGroup>
+      <FilesToZip Include="$(OutputDirectory)\**\*.*" Exclude="*.zip"/> 
+    </ItemGroup>
+    <Zip Files="@(FilesToZip)" WorkingDirectory="$(OutputDirectory)" ZipFileName="$(OutputDirectory)\..\$(ProjectName).zip"/>
+  </Target>
+</Project>

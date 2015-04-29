@@ -1,0 +1,14 @@
+﻿<Window x:Class="CCT.NUI.StartMenu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Kinect Context" Height="378" Width="603" WindowState="Normal" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Visibility="Hidden" Topmost="True" ShowInTaskbar="False" KeyDown="Window_KeyDown">
+    <Grid>
+        <StackPanel Name="stackPanel" Orientation="Horizontal" TextElement.FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 15 0 0"/>
+        <Canvas HorizontalAlignment="Left" Name="canvas" VerticalAlignment="Top">
+            <Polygon Name="polygon" Opacity="0.5" Stroke="Black" Fill="Aquamarine"/>
+        </Canvas>
+    </Grid>
+    <Window.Background>
+        <SolidColorBrush />
+    </Window.Background>
+</Window>

@@ -1,0 +1,18 @@
+﻿<Window x:Class="CCT.NUI.MouseControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:uc="clr-namespace:CCT.NUI.Visual;assembly=CCT.NUI.Visual"        
+        Title="Mouse Control" Height="320" Width="432" Loaded="Window_Loaded" Closing="Window_Closing" Topmost="True">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <ToggleButton Name="buttonToggle" Click="buttonToggle_Click">Enable Mouse Control</ToggleButton>
+            <StackPanel Orientation="Horizontal">
+                <Label>Cursor and Click Mode</Label>
+                <ComboBox Name="comboMode" SelectedIndex="0" SelectionChanged="comboMode_SelectionChanged"/>
+                <CheckBox Name="checkTopmost" Checked="checkTopmost_Checked" Margin="5" IsChecked="True">Topmost</CheckBox>
+            </StackPanel>
+            <uc:WpfVideoControl Name="videoControl" Width="320" Height="200" Stretch="Uniform"/>
+            <Button Name="buttonExit" Click="buttonExit_Click">Exit</Button>
+        </StackPanel>
+    </Grid>
+</Window>
