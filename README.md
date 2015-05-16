@@ -4,16 +4,18 @@ By [Venta Apps](http://ventaapps.com/)
 
 Dependency and Installation Issues
 -------------------------------------
-
-
+In order to run the project successfully the following dependencies are needed
+```
+OpenNI.net.dll
+OpenNI64.dll
+XnVNITE.net.dll
+Microsoft.Kinect.dll (Kinect SDK V2 dll)
+```
 
 About
 -----
 
 Candescent NUI [20148] port for Kinect V2 is maintained by Venta Apps, LLC.
-
-Code for rendering the current webpage to a PNG is borrowed from Phantom.js'
-implementation.
 
 ![Venta Apps](https://raw.githubusercontent.com/VentaApps/Candescent-NUI-20148-for-Kinect-V2/master/VentaappsLogo.png)
 
