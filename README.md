@@ -13,7 +13,10 @@ Using Candescent NUI with OPENNI is out of the scope of this documentation but I
 
 Changes:
 ---------
-	Mainly the changes weren’t in the logic level, I changed the way Candescent NUI connects to and reads frames from the Kinect sensor. In Kinect V1 there were multiple Streams that provide Frames taken by the sensor, but in Kinect V2 instead of the Stream Layer there is a Source layer that provides multiple Readers that provide frames taken by the sensor. Therefore reading data and setting event handlers were the major changes done in the porting.
+	Mainly the changes weren’t in the logic level, I changed the way Candescent NUI connects to and reads frames from the Kinect sensor.
+	In Kinect V1 there were multiple Streams that provide Frames taken by the sensor, but in Kinect V2 instead of the Stream Layer
+	there is a Source layer that provides multiple Readers that provide frames taken by the sensor. Therefore reading data and setting
+	event handlers were the major changes done in the porting.
 
 
 Dependency and Installation Issues
